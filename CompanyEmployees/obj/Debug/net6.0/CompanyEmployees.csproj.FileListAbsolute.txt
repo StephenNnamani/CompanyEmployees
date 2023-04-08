@@ -24,3 +24,10 @@ C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\Compa
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\obj\Debug\net6.0\CompanyEmployees.pdb
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\obj\Debug\net6.0\CompanyEmployees.genruntimeconfig.cache
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\obj\Debug\net6.0\ref\CompanyEmployees.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\nlog.config
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\NLog.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Contracts.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\LoggerService.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\LoggerService.pdb
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Contracts.pdb
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\obj\Debug\net6.0\CompanyEmployees.csproj.CopyComplete
