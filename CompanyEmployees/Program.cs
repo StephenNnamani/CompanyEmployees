@@ -12,7 +12,7 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
 
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
@@ -38,37 +38,6 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = Forward
 app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
-
-app.Use(async (context, next) => { 
-    await context.Response.WriteAsync("(First) Hello from the middleware component. \t"); 
-    await next.Invoke(); 
-    Console.WriteLine($"Logic after executing the next delegate in the Use method");
-    await next.Invoke();
-    Test.Text("Stephen Nnamani", 32);
-}); 
-//app.Run(async context => { 
-//    Console.WriteLine($"Writing the response to the client in the Run method"); 
-//    //context.Response.StatusCode = 200; 
-//    await context.Response.WriteAsync("Hello from the middleware component."); });
-app.Map("/roboticSence", builder =>
-{
-    builder.Use(async (context, next) =>
-    {
-        Console.WriteLine("Map.Use");
-        await next.Invoke();
-        Console.WriteLine("Map.Use after next delegate");
-    });
-    builder.Run(async context =>
-    {
-        Console.WriteLine($"Map branch response to the client in the Run method");
-        await context.Response.WriteAsync("This is from the Robotic sence\t");
-        await context.Response.WriteAsync("Hello from the builder.Run map branch.\t");
-    });
-});
-
-app.Run(async context => { Console.WriteLine($"Writing the response to the client in the Run method"); 
-    await context.Response.WriteAsync("(last)Hello from the App.Run component. "); 
-});
 
 app.MapControllers();
 

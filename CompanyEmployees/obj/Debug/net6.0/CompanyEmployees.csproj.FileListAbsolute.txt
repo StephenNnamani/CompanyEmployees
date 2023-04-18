@@ -96,3 +96,8 @@ C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\Compa
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Mono.TextTemplating.dll
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\CompanyEmployees.Presentation.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Service.Contracts.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\CompanyEmployees.Presentation.pdb
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Service.Contracts.pdb
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\obj\Debug\net6.0\CompanyEmployees.MvcApplicationPartsAssemblyInfo.cs
