@@ -10,6 +10,5 @@ namespace Service.Contracts
     {
         ICompanyService CompanyService { get; }
         IEmployeesService EmployeesService { get; }
-        void Save();
     }
 }

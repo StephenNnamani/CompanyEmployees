@@ -11,6 +11,12 @@ builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1",
+        new() { Title = "Company Employees API", Version = "v1" });
+});
 
 builder.Services.AddControllers().AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
 
@@ -28,7 +34,11 @@ else
 {
     app.UseHsts();
 }
-
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint(
+    "/swagger/v1/swagger.json",
+    "v1"
+    ));
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();

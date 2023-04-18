@@ -12,7 +12,7 @@ namespace CompanyEmployees.Presentation.Controllers
             _service = service;
 
         [Route("/ListOfCompanies")]
-        [HttpGet] 
+        [HttpGet]
         public IActionResult GetCompanies() 
         { 
             try 
