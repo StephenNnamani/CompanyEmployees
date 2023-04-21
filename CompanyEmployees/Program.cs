@@ -1,6 +1,9 @@
 using CompanyEmployees.Extensions;
+using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
+using Repository;
+using Service.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 

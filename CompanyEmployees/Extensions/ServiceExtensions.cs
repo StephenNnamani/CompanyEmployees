@@ -2,6 +2,8 @@
 using LoggerService;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Service;
+using Service.Contracts;
 
 namespace CompanyEmployees.Extensions
 {
@@ -25,8 +27,16 @@ namespace CompanyEmployees.Extensions
             services.AddSingleton<ILoggerManager, LoggerManager>();
         }
 
-        public static void ConfigureRepositoryManager(this IServiceCollection services) => 
+        public static void ConfigureRepositoryManager(this IServiceCollection services)
+        {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<IEmployeesService, EmployeesService>();
+            services.AddScoped<IServiceManager, ServiceManager>();
+        }
+        
+            
+           
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) => 
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));

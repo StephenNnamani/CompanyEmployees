@@ -1802,17 +1802,41 @@
           "bin/placeholder/Repository.dll": {}
         }
       },
+      "Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "Service.Contracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.dll": {}
+        }
+      },
       "Service.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Entities": "1.0.0"
+          "Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Service.Contracts.dll": {}
         },
         "runtime": {
           "bin/placeholder/Service.Contracts.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
         }
       }
     }
@@ -4973,10 +4997,20 @@
       "path": "../Repository/Repository.csproj",
       "msbuildProject": "../Repository/Repository.csproj"
     },
+    "Service/1.0.0": {
+      "type": "project",
+      "path": "../Service/Service.csproj",
+      "msbuildProject": "../Service/Service.csproj"
+    },
     "Service.Contracts/1.0.0": {
       "type": "project",
       "path": "../Service.Contracts/Service.Contracts.csproj",
       "msbuildProject": "../Service.Contracts/Service.Contracts.csproj"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4987,6 +5021,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
       "Repository >= 1.0.0",
+      "Service >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -5030,6 +5065,9 @@
             },
             "C:\\Users\\STephenScripts\\Desktop\\C# Apps\\Personal Projects\\CompanyEmployees\\Repository\\Repository.csproj": {
               "projectPath": "C:\\Users\\STephenScripts\\Desktop\\C# Apps\\Personal Projects\\CompanyEmployees\\Repository\\Repository.csproj"
+            },
+            "C:\\Users\\STephenScripts\\Desktop\\C# Apps\\Personal Projects\\CompanyEmployees\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\STephenScripts\\Desktop\\C# Apps\\Personal Projects\\CompanyEmployees\\Service\\Service.csproj"
             }
           }
         }

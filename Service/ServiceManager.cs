@@ -3,7 +3,7 @@ using Service.Contracts;
 
 namespace Service
 {
-    internal sealed class ServiceManager : IServiceManager
+    public sealed class ServiceManager : IServiceManager
     {
         private readonly Lazy<ICompanyService> _companyService;
         private readonly Lazy<IEmployeesService> _employeesService;

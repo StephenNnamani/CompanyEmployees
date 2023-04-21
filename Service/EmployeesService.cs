@@ -3,7 +3,7 @@ using Service.Contracts;
 
 namespace Service
 {
-    internal sealed class EmployeesService : IEmployeesService
+    public sealed class EmployeesService : IEmployeesService
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;

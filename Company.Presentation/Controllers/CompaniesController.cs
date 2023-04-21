@@ -3,7 +3,7 @@ using Service.Contracts;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
-    [Route("api/companies")]
+    [Route("api/Companies")]
     [ApiController]
     public class CompaniesController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace CompanyEmployees.Presentation.Controllers
                 return Ok(companies); 
             } 
             catch 
-            { 
+            {
                 return StatusCode(500, "Internal server error"); 
             } 
         }
