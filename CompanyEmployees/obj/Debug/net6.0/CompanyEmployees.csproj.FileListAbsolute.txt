@@ -109,3 +109,5 @@ C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\Compa
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Service.pdb
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Shared.dll
 C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\Shared.pdb
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\STephenScripts\Desktop\C# Apps\Personal Projects\CompanyEmployees\CompanyEmployees\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

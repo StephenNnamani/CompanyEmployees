@@ -20,6 +20,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1",
         new() { Title = "Company Employees API", Version = "v1" });
 });
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers().AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
 
@@ -28,6 +29,9 @@ LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nl
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+var loggerManager = app.Services.GetRequiredService<ILoggerManager>(); 
+app.ConfigureExceptionHandler(loggerManager);
 
 if (app.Environment.IsDevelopment())
 {
@@ -46,7 +50,10 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.All });
+app.UseForwardedHeaders(new ForwardedHeadersOptions 
+{ 
+    ForwardedHeaders = ForwardedHeaders.All 
+});
 
 app.UseCors("CorsPolicy");
 
