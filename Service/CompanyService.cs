@@ -18,6 +18,13 @@ namespace Service
             _mapper = mapper;
         }
 
+        public CompanyDto GetCompany(Guid companyId, bool trackChanges)
+        {
+            var company = _repositoryManager.Company.GetCompany(companyId, trackChanges);
+            var companyDto = _mapper.Map<CompanyDto>(company);
+            return companyDto;
+        }
+
         IEnumerable<CompanyDto> ICompanyService.GetAllCompanies(bool trackChanges)
         {
 

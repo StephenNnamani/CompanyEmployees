@@ -16,6 +16,10 @@ namespace Repository
         
         }
 
+        public Employee GetEmployee(Guid EmployeeId, bool trackChanges) =>
+            FindByCondition(c => c.Id.Equals(EmployeeId), trackChanges)
+            .SingleOrDefault();
+
         IEnumerable<Employee> IEmployeesRepository.GetAllEmployees(bool trackChanges) =>
             FindAll(trackChanges)
             .OrderBy(x => x.Name)

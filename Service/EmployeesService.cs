@@ -17,6 +17,14 @@ namespace Service
             _loggerManager = loggerManager;
             _mapper = mapper;
         }
+
+        public EmployeeDto GetEmployee(Guid Id, bool trackChanges)
+        {
+            var employee = _repositoryManager.Employee.GetEmployee(Id, trackChanges);
+            var employeeDto = _mapper.Map<EmployeeDto>(employee);
+            return employeeDto;
+        }
+
         IEnumerable<EmployeeDto> IEmployeesService.GetAllEmployees(bool trackChanges)
         {
 
