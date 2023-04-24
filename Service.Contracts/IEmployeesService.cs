@@ -4,8 +4,8 @@ namespace Service.Contracts
 {
     public interface IEmployeesService
     {
-        IEnumerable<EmployeeDto> GetAllEmployees(bool trackChanges);
-        EmployeeDto GetEmployee(Guid Id, bool trackChanges);
+        public Task<IEnumerable<EmployeeDto>> GetAllEmployees(bool trackChanges); 
+        public Task<EmployeeDto> GetEmployee(Guid Id, bool trackChanges);
 
     }
 }

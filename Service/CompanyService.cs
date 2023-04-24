@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Exceptions;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -18,20 +19,18 @@ namespace Service
             _mapper = mapper;
         }
 
-        public CompanyDto GetCompany(Guid companyId, bool trackChanges)
+        public async Task<CompanyDto> GetCompany(Guid companyId, bool trackChanges)
         {
-            var company = _repositoryManager.Company.GetCompany(companyId, trackChanges);
+            var company = await _repositoryManager.Company.GetCompany(companyId, trackChanges);
             var companyDto = _mapper.Map<CompanyDto>(company);
             return companyDto;
         }
 
-        IEnumerable<CompanyDto> ICompanyService.GetAllCompanies(bool trackChanges)
+        public async Task<IEnumerable<CompanyDto>> GetAllCompanies(bool trackChanges)
         {
-
-            var companies = _repositoryManager.Company.GetAllCompanies(trackChanges);
+            var companies = await _repositoryManager.Company.GetAllCompanies(trackChanges);
             var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
             return companiesDto;
-
         }
     }
 }

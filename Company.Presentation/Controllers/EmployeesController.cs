@@ -16,19 +16,19 @@ namespace CompanyEmployees.Presentation.Controllers
         public EmployeesController(IServiceManager service) =>
             _service = service;
 
-        [Route("ListOfEmployees")]
+        [Route("/ListOfEmployees")]
         [HttpGet]
-        public IActionResult GetEmployees()
+        public async Task<IActionResult> GetEmployees()
         {
-            var employees = _service.EmployeesService.GetAllEmployees(trackChanges: false);
+            var employees = await _service.EmployeesService.GetAllEmployees(trackChanges: false);
             return Ok(employees);
         }
 
-        [Route("EmployeeProfile")]
-        [HttpGet]
-        public IActionResult GetEmployee(Guid Id)
+        //[Route("/EmployeeProfile/Id")]
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> GetEmployee(Guid Id)
         {
-            var employee = _service.EmployeesService.GetEmployee(Id, trackChanges: false);
+            var employee = await _service.EmployeesService.GetEmployee(Id, trackChanges: false);
             return Ok(employee);
         }
     }
