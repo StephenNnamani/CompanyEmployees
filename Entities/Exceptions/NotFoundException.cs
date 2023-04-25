@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Exceptions
 {
-    public abstract class NotFoundException : Exception
+    public abstract class NotFoundException : ApplicationException
     {
         protected NotFoundException(string message)
             :base(message)

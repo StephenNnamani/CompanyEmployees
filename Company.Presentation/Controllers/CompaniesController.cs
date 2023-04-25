@@ -19,8 +19,8 @@ namespace CompanyEmployees.Presentation.Controllers
             return Ok(companies);
         }
 
-        //[Route("/CompanyProfile/Id")]
-        [HttpGet("{id:guid}")]
+        [Route("CompanyProfile/")]
+        [HttpGet]
         public async Task<IActionResult> GetEmployee(Guid Id)
         {
             var company = await _service.CompanyService.GetCompany(Id, trackChanges: false);

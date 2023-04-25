@@ -13,7 +13,8 @@ public static class ExceptionMiddlewareExtensions
             appError.Run(async context => 
             { 
                 context.Response.ContentType = "application/json"; 
-                var contextFeature = context.Features.Get<IExceptionHandlerFeature>(); 
+                var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+
                 if (contextFeature != null) 
                 { 
                     context.Response.StatusCode = contextFeature.Error switch 
