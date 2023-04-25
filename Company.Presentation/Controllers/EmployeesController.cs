@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
-    [Route("api/Employees")]
+    [Route("api/companies/{companyId}/employees")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
@@ -16,19 +16,18 @@ namespace CompanyEmployees.Presentation.Controllers
         public EmployeesController(IServiceManager service) =>
             _service = service;
 
-        [Route("/ListOfEmployees")]
+        [Route("Company_Employees")]
         [HttpGet]
-        public async Task<IActionResult> GetEmployees()
+        public async Task<IActionResult> GetAllEmployees(Guid companyId)
         {
-            var employees = await _service.EmployeesService.GetAllEmployees(trackChanges: false);
+            var employees = await _service.EmployeesService.GetAllEmployees(companyId, trackChanges: false);
             return Ok(employees);
         }
-
-        [Route("EmployeeProfile/")]
+        [Route("Employee_Profile")]
         [HttpGet]
-        public async Task<IActionResult> GetEmployee(Guid Id)
+        public async Task<IActionResult> GetEmployee(Guid Id, Guid companyId)
         {
-            var employee = await _service.EmployeesService.GetEmployee(Id, trackChanges: false);
+            var employee = await _service.EmployeesService.GetEmployee(Id, companyId, trackChanges: false);
             return Ok(employee);
         }
     }

@@ -19,15 +19,15 @@ namespace Repository
         
         }
 
-        async Task<IEnumerable<Employee>> IEmployeesRepository.GetAllEmployees(bool trackChanges)
+        async Task<IEnumerable<Employee>> IEmployeesRepository.GetAllEmployees(Guid Id, bool trackChanges)
         {
-            var x = await FindAll(trackChanges).OrderBy(c => c.Name).ToListAsync();
+            var x = await FindByCondition(c => c.CompanyId.Equals(Id), trackChanges).OrderBy(c => c.Name).ToListAsync();
             return x;
         }
 
-        public async Task<Employee> GetEmployee(Guid EmployeeId, bool trackChanges)
+        public async Task<Employee> GetEmployee(Guid EmployeeId, Guid companyId, bool trackChanges)
         {
-            var x = await FindByCondition(c => c.Id.Equals(EmployeeId), trackChanges).SingleOrDefaultAsync();
+            var x = await FindByCondition(c => c.Id.Equals(EmployeeId) && c.Id.Equals(companyId), trackChanges).SingleOrDefaultAsync();
             if (x == null)
                 throw new CompanyNotFoundException(EmployeeId);
             return x;

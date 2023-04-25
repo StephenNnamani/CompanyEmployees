@@ -21,7 +21,7 @@ namespace CompanyEmployees.Presentation.Controllers
 
         [Route("CompanyProfile/")]
         [HttpGet]
-        public async Task<IActionResult> GetEmployee(Guid Id)
+        public async Task<IActionResult> GetCompany(Guid Id)
         {
             var company = await _service.CompanyService.GetCompany(Id, trackChanges: false);
             return Ok(company);

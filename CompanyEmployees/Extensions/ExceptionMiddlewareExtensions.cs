@@ -8,6 +8,7 @@ public static class ExceptionMiddlewareExtensions
 {
     public static void ConfigureExceptionHandler(this WebApplication app, ILoggerManager logger) 
     { 
+        
         app.UseExceptionHandler( appError => 
         { 
             appError.Run(async context => 
