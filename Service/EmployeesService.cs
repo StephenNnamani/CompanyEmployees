@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -35,5 +36,14 @@ namespace Service
 
         }
 
+        public EmployeeDto CreateEmployee(CreateEmployeeDto createEmployee)
+        {
+            var employeeEntity = _mapper.Map<Employee>(createEmployee);
+            _repositoryManager.Employee.CreateEmployee(employeeEntity);
+            _repositoryManager.Save();
+
+            var employeeToReturn = _mapper.Map<EmployeeDto>(employeeEntity);
+            return employeeToReturn;
+        }
     }
 }

@@ -2,12 +2,6 @@
 using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository
 {
@@ -16,7 +10,7 @@ namespace Repository
         public EmployeesRepository(RepositoryContext repositoryContext)
             : base(repositoryContext)
         {
-        
+
         }
 
         async Task<IEnumerable<Employee>> IEmployeesRepository.GetAllEmployees(Guid Id, bool trackChanges)
@@ -32,5 +26,7 @@ namespace Repository
                 throw new CompanyNotFoundException(EmployeeId);
             return x;
         }
+
+        public void CreateEmployee(Employee employee) => Create(employee);
     }
 }
