@@ -5,7 +5,8 @@
     {
         public Guid Id { get; init; }
         public string? Name { get; init; }
-        public int Employees { get; init; }
         public string? FullAddress { get; init; }
+        public ICollection<EmployeeDto>? Employees { get; init; }
+
     }
 }

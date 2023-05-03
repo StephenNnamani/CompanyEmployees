@@ -29,7 +29,7 @@ namespace CompanyEmployees.Presentation.Controllers
         }
 
 
-        [Route("/ListOfCompanies")]
+        [Route("/ListOfCompanies/")]
         [HttpPost]
         public IActionResult CreateCompany([FromBody] CreateCompanyDto company)
         {

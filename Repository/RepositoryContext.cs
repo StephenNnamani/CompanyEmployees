@@ -17,7 +17,11 @@ namespace Repository
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
-        { 
+        {
+            modelBuilder.Entity<Company>()
+                .HasMany(c => c.Employees)
+                .WithOne(c => c.Company)
+                .HasForeignKey(c => c.CompanyId);
             modelBuilder.ApplyConfiguration(new CompanyConfiguration()); 
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration()); 
         }

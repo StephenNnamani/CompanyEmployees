@@ -32,6 +32,7 @@ namespace CompanyEmployees.Presentation.Controllers
             return Ok(employee);
         }
 
+        [Route("Company_Employees")]
         [HttpPost]
         public IActionResult CreateEmployee([FromBody] CreateEmployeeDto createEmployee)
         {
