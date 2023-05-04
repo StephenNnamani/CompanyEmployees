@@ -40,7 +40,7 @@ namespace CompanyEmployees.Presentation.Controllers
                 return BadRequest("CreateEmployeeDto Object is null");
             var createdEmployee = _service.EmployeesService.CreateEmployee(createEmployee);
 
-            return CreatedAtRoute("EmployeeById", new { id = createdEmployee.Id }, createdEmployee);
+            return CreatedAtRoute("EmployeeId", new { id = createdEmployee.Id }, createdEmployee);
         }
     }
 }

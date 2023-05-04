@@ -38,7 +38,7 @@ namespace CompanyEmployees.Presentation.Controllers
 
             var createdCompany = _service.CompanyService.CreateCompany(company);
 
-            return CreatedAtRoute("CompanyById", new {id = createdCompany.Id}, createdCompany);
+            return CreatedAtRoute("CompanyId", new {id = createdCompany.Id}, createdCompany);
         }
     }
 }
