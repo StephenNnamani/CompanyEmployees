@@ -4,7 +4,7 @@ using Shared.DataTransferObjects;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
-    [Route("api/Companies")]
+    [Route("Companies")]
     [ApiController]
     public class CompaniesController : ControllerBase
     {
@@ -13,7 +13,7 @@ namespace CompanyEmployees.Presentation.Controllers
             _service = service;
 
         [Route("/ListOfCompanies")]
-        [HttpGet]
+        [HttpGet (Name = "Get all companies")]
         public async Task<IActionResult> GetCompanies()
         {
             var companies = await _service.CompanyService.GetAllCompanies(trackChanges: false);
@@ -21,7 +21,7 @@ namespace CompanyEmployees.Presentation.Controllers
         }
 
         [Route("CompanyProfile/")]
-        [HttpGet]
+        [HttpGet(Name = "Get A company")]
         public async Task<IActionResult> GetCompany(Guid Id)
         {
             var company = await _service.CompanyService.GetCompany(Id, trackChanges: false);
@@ -30,7 +30,7 @@ namespace CompanyEmployees.Presentation.Controllers
 
 
         [Route("/ListOfCompanies/")]
-        [HttpPost]
+        [HttpPost (Name = "Add new company")]
         public IActionResult CreateCompany([FromBody] CreateCompanyDto company)
         {
             if (company == null)

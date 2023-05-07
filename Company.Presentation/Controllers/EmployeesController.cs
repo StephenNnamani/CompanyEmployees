@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
-    [Route("api/companies/{companyId}/employees")]
+    [Route("api/companies/{employeeId}/employees")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
@@ -17,23 +17,23 @@ namespace CompanyEmployees.Presentation.Controllers
         public EmployeesController(IServiceManager service) =>
             _service = service;
 
-        [Route("Company_Employees")]
-        [HttpGet]
+        [Route("Getallemployees")]
+        [HttpGet (Name = "Get all employees")]
         public async Task<IActionResult> GetAllEmployees(Guid companyId)
         {
             var employees = await _service.EmployeesService.GetAllEmployees(companyId, trackChanges: false);
             return Ok(employees);
         }
-        [Route("Employee_Profile")]
-        [HttpGet]
+        [Route("EmployeeProfile")]
+        [HttpGet (Name = "Get an employee")]
         public async Task<IActionResult> GetEmployee(Guid Id, Guid companyId)
         {
             var employee = await _service.EmployeesService.GetEmployee(Id, companyId, trackChanges: false);
             return Ok(employee);
         }
 
-        [Route("Company_Employees")]
-        [HttpPost]
+        [Route("CreateEmployee")]
+        [HttpPost (Name = "Create new employees")]
         public IActionResult CreateEmployee([FromBody] CreateEmployeeDto createEmployee)
         {
             if (createEmployee == null) 
