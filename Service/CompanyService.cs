@@ -33,14 +33,14 @@ namespace Service
             return companiesDto;
         }
 
-        public CompanyDto CreateCompany(CreateCompanyDto createCompany)
+        public string CreateCompany(CreateCompanyDto createCompany)
         {
             var companyEntity = _mapper.Map<Company>(createCompany);
             _repositoryManager.Company.CreateCompany(companyEntity);
             _repositoryManager.Save();
 
             var companyToReturn = _mapper.Map<CompanyDto>(companyEntity);
-            return companyToReturn;
+            return "Company successfully created";
         }
     }
 }

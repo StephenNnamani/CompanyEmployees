@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
-    [Route("api/companies/{employeeId}/employees")]
+    [Route("api/companies/employees")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
@@ -18,29 +18,40 @@ namespace CompanyEmployees.Presentation.Controllers
             _service = service;
 
         [Route("Getallemployees")]
-        [HttpGet (Name = "Get all employees")]
-        public async Task<IActionResult> GetAllEmployees(Guid companyId)
+        [HttpGet]
+        public async Task<IActionResult> GetAllEmployees()
         {
-            var employees = await _service.EmployeesService.GetAllEmployees(companyId, trackChanges: false);
+            var employees = await _service.EmployeesService.GetAllEmployees(trackChanges: false);
             return Ok(employees);
         }
+
+
+        [Route("GetallCompanyEmployees")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllCompanyEmployees(Guid companyId)
+        {
+            var employees = await _service.EmployeesService.GetAllCompanyEmployees(companyId, trackChanges: false);
+            return Ok(employees);
+        }
+
         [Route("EmployeeProfile")]
-        [HttpGet (Name = "Get an employee")]
+        [HttpGet]
         public async Task<IActionResult> GetEmployee(Guid Id, Guid companyId)
         {
-            var employee = await _service.EmployeesService.GetEmployee(Id, companyId, trackChanges: false);
+            var employee = await _service.EmployeesService.GetEmployee(Id, trackChanges: false);
             return Ok(employee);
         }
 
-        [Route("CreateEmployee")]
-        [HttpPost (Name = "Create new employees")]
+        
+        [HttpPost("create-employee", Name = "Create-new-employees")]
         public IActionResult CreateEmployee([FromBody] CreateEmployeeDto createEmployee)
         {
             if (createEmployee == null) 
                 return BadRequest("CreateEmployeeDto Object is null");
             var createdEmployee = _service.EmployeesService.CreateEmployee(createEmployee);
 
-            return CreatedAtRoute("EmployeeId", new { id = createdEmployee.Id }, createdEmployee);
+            return Ok(createdEmployee);
+
         }
     }
 }

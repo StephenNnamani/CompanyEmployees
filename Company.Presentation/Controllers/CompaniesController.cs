@@ -13,7 +13,7 @@ namespace CompanyEmployees.Presentation.Controllers
             _service = service;
 
         [Route("/ListOfCompanies")]
-        [HttpGet (Name = "Get all companies")]
+        [HttpGet]
         public async Task<IActionResult> GetCompanies()
         {
             var companies = await _service.CompanyService.GetAllCompanies(trackChanges: false);
@@ -21,7 +21,7 @@ namespace CompanyEmployees.Presentation.Controllers
         }
 
         [Route("CompanyProfile/")]
-        [HttpGet(Name = "Get A company")]
+        [HttpGet]
         public async Task<IActionResult> GetCompany(Guid Id)
         {
             var company = await _service.CompanyService.GetCompany(Id, trackChanges: false);
@@ -30,7 +30,7 @@ namespace CompanyEmployees.Presentation.Controllers
 
 
         [Route("/ListOfCompanies/")]
-        [HttpPost (Name = "Add new company")]
+        [HttpPost]
         public IActionResult CreateCompany([FromBody] CreateCompanyDto company)
         {
             if (company == null)
@@ -38,7 +38,7 @@ namespace CompanyEmployees.Presentation.Controllers
 
             var createdCompany = _service.CompanyService.CreateCompany(company);
 
-            return CreatedAtRoute("CompanyId", new {id = createdCompany.Id}, createdCompany);
+            return Ok(createdCompany);
         }
     }
 }
