@@ -1,6 +1,7 @@
 using CompanyEmployees.Extensions;
 using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using NLog;
 using Repository;
 using Service.Contracts;
@@ -21,6 +22,11 @@ builder.Services.AddSwaggerGen(c =>
         new() { Title = "Company Employees API", Version = "v1" });
 });
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.Configure<ApiBehaviorOptions>(option =>
+{
+    option.SuppressModelStateInvalidFilter = true;
+});
 
 builder.Services.AddControllers(config =>
 {

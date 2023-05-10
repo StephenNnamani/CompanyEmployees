@@ -5,7 +5,7 @@ using Shared.DataTransferObjects;
 namespace CompanyEmployees.Presentation.Controllers
 {
     [Route("Companies")]
-    [ApiController]
+    //[ApiController]
     public class CompaniesController : ControllerBase
     {
         private readonly IServiceManager _service;
@@ -29,8 +29,7 @@ namespace CompanyEmployees.Presentation.Controllers
         }
 
 
-        [Route("/ListOfCompanies/")]
-        [HttpPost]
+        [HttpPost ("create-company", Name = "create-company")]
         public IActionResult CreateCompany([FromBody] CreateCompanyDto company)
         {
             if (company == null)
