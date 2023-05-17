@@ -42,6 +42,20 @@ namespace Service
             var companyToReturn = _mapper.Map<CompanyDto>(companyEntity);
             return "Company successfully created";
         }
+
+        public async Task<IEnumerable<CompanyDto>> GetByIds(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            if (ids == null)
+                throw new IdParameterBadRequestException();
+
+            var companies = await _repositoryManager.Company.GetByIds(ids, trackChanges);
+
+            if(ids.Count() != companies.Count())
+                throw new CollectionByIdsBadRequestException();
+
+            var companiesDtoCollection = _mapper.Map<IEnumerable<CompanyDto>>(companies);
+            return companiesDtoCollection;
+        }
     }
 }
 

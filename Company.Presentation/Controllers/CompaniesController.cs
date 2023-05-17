@@ -39,5 +39,16 @@ namespace CompanyEmployees.Presentation.Controllers
 
             return Ok(createdCompany);
         }
+
+        [HttpPost("Get-company-collection", Name = "Get-company-collection")]
+        public IActionResult GetCompanyCollection([FromBody] CreateCompanyDto company)
+        {
+            if (company == null)
+                return BadRequest("CreateCompanyDto object is null");
+
+            var createdCompany = _service.CompanyService.CreateCompany(company);
+
+            return Ok(createdCompany);
+        }
     }
 }

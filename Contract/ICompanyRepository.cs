@@ -12,5 +12,6 @@ namespace Contracts
         public Task<IEnumerable<Company>> GetAllCompanies(bool trackChanges);
         public Task<Company> GetCompany(Guid Id, bool trackChanges);
         public void CreateCompany(Company company);
+        public Task<IEnumerable<Company>> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
     }
 }
