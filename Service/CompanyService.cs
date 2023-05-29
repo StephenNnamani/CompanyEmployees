@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -46,7 +47,7 @@ namespace Service
         public async Task<IEnumerable<CompanyDto>> GetByIds(IEnumerable<Guid> ids, bool trackChanges)
         {
             if (ids == null)
-                throw new IdParameterBadRequestException();
+                throw new IdParametersBadRequestException();
 
             var companies = await _repositoryManager.Company.GetByIds(ids, trackChanges);
 
@@ -55,6 +56,23 @@ namespace Service
 
             var companiesDtoCollection = _mapper.Map<IEnumerable<CompanyDto>>(companies);
             return companiesDtoCollection;
+        }
+
+        public (IEnumerable<CompanyDto> companies, string ids) CreateCompanyCollection(IEnumerable<CreateCompanyDto> companyCollection) 
+        { 
+            if (companyCollection is null) 
+                throw new CollectionByIdsBadRequestException(); 
+            
+            var companyEntities = _mapper.Map<IEnumerable<Company>>(companyCollection); 
+            foreach (var company in companyEntities) 
+            { 
+                _repositoryManager.Company.CreateCompany(company); 
+            } 
+            _repositoryManager.Save(); 
+            
+            var companyCollectionToReturn = _mapper.Map<IEnumerable<CompanyDto>>(companyEntities); 
+            var ids = string.Join(",", companyCollectionToReturn.Select(c => c.Id)); 
+            return (companies: companyCollectionToReturn, ids: ids); 
         }
     }
 }

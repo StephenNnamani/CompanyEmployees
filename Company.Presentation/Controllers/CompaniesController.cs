@@ -28,6 +28,14 @@ namespace CompanyEmployees.Presentation.Controllers
             return Ok(company);
         }
 
+        [Route("/Comanies-search/")]
+        [HttpGet]
+        public async Task<IActionResult> GetCompaniesById(IEnumerable<Guid> Ids)
+        {
+            var company = await _service.CompanyService.GetByIds(Ids, trackChanges: false);
+            return Ok(company);
+        }
+
 
         [HttpPost ("create-company", Name = "create-company")]
         public IActionResult CreateCompany([FromBody] CreateCompanyDto company)
@@ -40,13 +48,13 @@ namespace CompanyEmployees.Presentation.Controllers
             return Ok(createdCompany);
         }
 
-        [HttpPost("Get-company-collection", Name = "Get-company-collection")]
-        public IActionResult GetCompanyCollection([FromBody] CreateCompanyDto company)
+        [HttpPost("Create-company-collection", Name = "Create-company-collection")]
+        public IActionResult CreateCompanyCollection([FromBody] IEnumerable<CreateCompanyDto> companyCollection)
         {
-            if (company == null)
+            if (companyCollection == null)
                 return BadRequest("CreateCompanyDto object is null");
 
-            var createdCompany = _service.CompanyService.CreateCompany(company);
+            var createdCompany = _service.CompanyService.CreateCompanyCollection(companyCollection);
 
             return Ok(createdCompany);
         }

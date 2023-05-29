@@ -9,7 +9,9 @@ namespace Service.Contracts
         public Task<IEnumerable<EmployeeDto>> GetAllCompanyEmployees(Guid companyId, bool trackChanges);
         public Task<EmployeeDto> GetEmployee(Guid Id, bool trackChanges);
 
-        public string CreateEmployee(CreateEmployeeDto createEmployee);
+        public string CreateEmployee(IEnumerable<CreateEmployeeDto> createEmployee);
+
+        public Task<IEnumerable<EmployeeDto>> GetEmployeesByIds(IEnumerable<Guid> ids, bool trackChanges);
 
     }
 }
