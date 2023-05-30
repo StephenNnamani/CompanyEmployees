@@ -43,11 +43,11 @@ namespace CompanyEmployees.Presentation.Controllers
             return Ok(employee);
         }
 
-        
+
         [HttpPost("create-employee", Name = "Create-new-employees")]
         public IActionResult CreateEmployee([FromBody] IEnumerable<CreateEmployeeDto> createEmployee)
         {
-            if (createEmployee == null) 
+            if (createEmployee == null)
                 return BadRequest("CreateEmployeeDto Object is null");
             var createdEmployee = _service.EmployeesService.CreateEmployee(createEmployee);
 
@@ -55,16 +55,5 @@ namespace CompanyEmployees.Presentation.Controllers
 
         }
 
-        [Route("Get-Employees-by-ids")]
-        [HttpGet]
-        public async Task<IActionResult> GetEmployeesById(IEnumerable<Guid> Ids)
-        {
-            if (Ids == null)
-                return BadRequest("Ids object is null");
-
-            var employees = await _service.EmployeesService.GetEmployeesByIds(Ids, trackChanges: false);
-
-            return Ok(employees);
-        }
     }
 }

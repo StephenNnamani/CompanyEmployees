@@ -49,26 +49,12 @@ namespace Service
         {
             var employeeEntity = _mapper.Map<IEnumerable<Employee>>(createEmployee);
 
-            foreach( var employee in employeeEntity)
+            foreach (var employee in employeeEntity)
             {
                 _repositoryManager.Employee.CreateEmployee(employee);
             }
             _repositoryManager.Save();
             return "Employee Successfully created";
-        }
-
-        public async Task<IEnumerable<EmployeeDto>> GetEmployeesByIds(IEnumerable<Guid> ids, bool trackChanges)
-        {
-            if (ids == null)
-                throw new IdParametersBadRequestException();
-
-            var employees = await _repositoryManager.Company.GetByIds(ids, trackChanges);
-
-            if (ids.Count() != employees.Count())
-                throw new CollectionByIdsBadRequestException();
-
-            var employeeDtoCollection = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
-            return employeeDtoCollection;
         }
     }
 }

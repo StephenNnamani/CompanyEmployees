@@ -8,6 +8,5 @@ namespace Contracts
         public Task<IEnumerable<Employee>> GetAllCompanyEmployees(Guid companyId, bool trackChanges);
         public Task<Employee> GetEmployee(Guid Id, bool trackChanges);
         public void CreateEmployee(Employee employee);
-        public Task<IEnumerable<Employee>> GetEmployeesByIds(IEnumerable<Guid> ids, bool trackChanges);
     }
 }

@@ -11,7 +11,5 @@ namespace Service.Contracts
 
         public string CreateEmployee(IEnumerable<CreateEmployeeDto> createEmployee);
 
-        public Task<IEnumerable<EmployeeDto>> GetEmployeesByIds(IEnumerable<Guid> ids, bool trackChanges);
-
     }
 }
