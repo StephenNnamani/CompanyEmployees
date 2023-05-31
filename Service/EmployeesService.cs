@@ -56,5 +56,19 @@ namespace Service
             _repositoryManager.Save();
             return "Employee Successfully created";
         }
+
+        public async Task<IEnumerable<EmployeeDto>> GetByIds(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            if (ids == null)
+                throw new IdParametersBadRequestException();
+
+            var employees = await _repositoryManager.Employee.GetByIds(ids, trackChanges);
+
+            if (ids.Count() != employees.Count())
+                throw new CollectionByIdsBadRequestException();
+
+            var employeeDtoCollection = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
+            return employeeDtoCollection;
+        }
     }
 }

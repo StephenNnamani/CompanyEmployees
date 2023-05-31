@@ -32,6 +32,14 @@ namespace Repository
             return x;
         }
 
+        public async Task<IEnumerable<Employee>> GetByIds(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            var x = await FindByCondition(c => ids.Contains(c.Id), trackChanges)
+                 .OrderBy(c => c.Name)
+                 .ToListAsync();
+            return x;
+        }
+
         public void CreateEmployee(Employee employee) => Create(employee);
 
     }

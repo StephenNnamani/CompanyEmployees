@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace CompanyEmployees.Presentation.Controllers
 {
     [Route("api/companies/employees")]
-    [ApiController]
+    //[ApiController]
     public class EmployeesController : ControllerBase
     {
         private readonly IServiceManager _service;
@@ -43,6 +43,14 @@ namespace CompanyEmployees.Presentation.Controllers
             return Ok(employee);
         }
 
+
+        [HttpGet("GetEmployeesByIds")]
+        public async Task<IActionResult> GetEmployeeByIds(IEnumerable<Guid> Ids)
+        {
+              var employee = await _service.EmployeesService.GetByIds(Ids, trackChanges: false);
+             
+            return Ok(employee);
+        }
 
         [HttpPost("create-employee", Name = "Create-new-employees")]
         public IActionResult CreateEmployee([FromBody] IEnumerable<CreateEmployeeDto> createEmployee)
