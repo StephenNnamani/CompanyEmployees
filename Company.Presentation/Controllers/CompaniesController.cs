@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CompanyEmployees.Presentation.ModelBinders;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -30,7 +31,7 @@ namespace CompanyEmployees.Presentation.Controllers
 
         [Route("/Comanies-search/")]
         [HttpGet]
-        public async Task<IActionResult> GetCompaniesById(IEnumerable<Guid> Ids)
+        public async Task<IActionResult> GetCompaniesById([ModelBinder(typeof(ArrayModelBinder))] IEnumerable<Guid> Ids)
         {
             var company = await _service.CompanyService.GetByIds(Ids, trackChanges: false);
             return Ok(company);

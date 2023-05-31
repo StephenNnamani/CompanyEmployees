@@ -42,5 +42,9 @@ namespace Repository
 
         public void CreateEmployee(Employee employee) => Create(employee);
 
+        public void DeleteEmployies(IEnumerable<Guid> employeeIds, bool trackChanges)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

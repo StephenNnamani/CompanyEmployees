@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CompanyEmployees.Presentation.ModelBinders;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -45,7 +46,7 @@ namespace CompanyEmployees.Presentation.Controllers
 
 
         [HttpGet("GetEmployeesByIds")]
-        public async Task<IActionResult> GetEmployeeByIds(IEnumerable<Guid> Ids)
+        public async Task<IActionResult> GetEmployeeByIds([ModelBinder(typeof(ArrayModelBinder))] IEnumerable<Guid> Ids)
         {
               var employee = await _service.EmployeesService.GetByIds(Ids, trackChanges: false);
              

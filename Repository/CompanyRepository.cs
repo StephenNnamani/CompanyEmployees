@@ -17,6 +17,11 @@ namespace Repository
 
         public void CreateCompany(Company company) => Create(company);
 
+        public void DeleteCompanies(IEnumerable<Guid> companiesIds, bool trackChanges)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Company>> GetAllCompanies(bool trackChanges)
         {
             var x = await FindAll(trackChanges).OrderBy(c => c.Name).ToListAsync();

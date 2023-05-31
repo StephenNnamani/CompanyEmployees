@@ -74,6 +74,11 @@ namespace Service
             var ids = string.Join(",", companyCollectionToReturn.Select(c => c.Id)); 
             return (companies: companyCollectionToReturn, ids: ids); 
         }
+
+        public void DeleteCompany(IEnumerable<Guid> companyId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
