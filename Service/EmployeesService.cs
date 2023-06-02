@@ -70,5 +70,17 @@ namespace Service
             var employeeDtoCollection = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
             return employeeDtoCollection;
         }
+
+        public async Task DeleteEmployee(IEnumerable<Guid> employeeIds, bool trackChanges)
+        {
+            if (employeeIds == null)
+                throw new CollectionByIdsBadRequestException();
+
+            foreach(var employee in employeeIds)
+            {
+                var x = await _repositoryManager.Employee.GetEmployee(employee, trackChanges);
+                _repositoryManager.Employee.DeleteEmployies(x, trackChanges);
+            }
+        }
     }
 }

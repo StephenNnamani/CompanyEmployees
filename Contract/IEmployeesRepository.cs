@@ -9,6 +9,6 @@ namespace Contracts
         public Task<Employee> GetEmployee(Guid Id, bool trackChanges);
         public Task<IEnumerable<Employee>> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
         public void CreateEmployee(Employee employee);
-        public void DeleteEmployies(IEnumerable<Guid> employeeIds, bool trackChanges);
+        public void DeleteEmployies(Employee employeeIds, bool trackChanges);
     }
 }

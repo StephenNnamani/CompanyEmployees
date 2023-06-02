@@ -9,6 +9,6 @@ namespace Service.Contracts
         public Task<IEnumerable<CompanyDto>> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
         public string CreateCompany(CreateCompanyDto createCompany);
         public (IEnumerable<CompanyDto> companies, string ids) CreateCompanyCollection(IEnumerable<CreateCompanyDto> companyCollection);
-        public void DeleteCompany(IEnumerable<Guid> companyId);
+        public Task DeleteCompanies(IEnumerable<Guid> companyId, bool trackChanges);
     }
 }

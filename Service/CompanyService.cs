@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using System.Linq;
 
 namespace Service
 {
@@ -75,9 +76,22 @@ namespace Service
             return (companies: companyCollectionToReturn, ids: ids); 
         }
 
-        public void DeleteCompany(IEnumerable<Guid> companyId)
+        public async Task DeleteCompanies(IEnumerable<Guid> companyId, bool trackChanges)
         {
-            throw new NotImplementedException();
+            if (companyId == null)
+                throw new CollectionByIdsBadRequestException();
+
+            var companyEntities = _mapper.Map<IEnumerable<Company>>(companyId);
+
+            foreach(var Id in companyEntities)
+            {
+                var x = await _repositoryManager.Company.GetCompany(Id.Id, trackChanges);
+                _repositoryManager.Company.DeleteCompanies(x, trackChanges);
+            }
+
+            _repositoryManager.Save();
+
+            return;
         }
     }
 }

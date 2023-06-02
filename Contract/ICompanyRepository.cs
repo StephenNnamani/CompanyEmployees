@@ -13,6 +13,6 @@ namespace Contracts
         public Task<Company> GetCompany(Guid Id, bool trackChanges);
         public Task<IEnumerable<Company>> GetByIds(IEnumerable<Guid> ids, bool trackChanges);
         public void CreateCompany(Company company);
-        public void DeleteCompanies(IEnumerable<Guid> companiesIds, bool trackChanges);
+        public void DeleteCompanies(Company company, bool trackChanges);
     }
 }
