@@ -81,6 +81,7 @@ namespace Service
                 var x = await _repositoryManager.Employee.GetEmployee(employee, trackChanges);
                 _repositoryManager.Employee.DeleteEmployies(x, trackChanges);
             }
+            _repositoryManager.Save();
         }
     }
 }

@@ -59,5 +59,13 @@ namespace CompanyEmployees.Presentation.Controllers
 
             return Ok(createdCompany);
         }
+
+        [HttpDelete("delete-companies", Name = "delete-company")]
+        public IActionResult DeleteCompanies(IEnumerable<Guid> companyIds)
+        {
+            _service.CompanyService.DeleteCompanies(companyIds, trackChanges: false);
+
+            return NoContent();
+        }
     }
 }
