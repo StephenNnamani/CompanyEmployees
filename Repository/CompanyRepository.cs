@@ -17,8 +17,6 @@ namespace Repository
 
         public void CreateCompany(Company company) => Create(company);
 
-        public void DeleteCompanies(Company company, bool trackChanges) => Delete(company);
-
         public async Task<IEnumerable<Company>> GetAllCompanies(bool trackChanges)
         {
             var x = await FindAll(trackChanges).OrderBy(c => c.Name).ToListAsync();
@@ -40,6 +38,8 @@ namespace Repository
                 throw new CompanyNotFoundException(companyId);
             return x;
         }
+
+        public void DeleteCompanies(Company company, bool trackChanges) => Delete(company);
 
     }
 }

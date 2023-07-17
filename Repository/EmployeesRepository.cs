@@ -42,6 +42,6 @@ namespace Repository
 
         public void CreateEmployee(Employee employee) => Create(employee);
 
-        public void DeleteEmployies(Employee employee, bool trackChanges) => Delete(employee);
+        public void DeleteEmployies(Employee employee) => Delete(employee);
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using System;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
@@ -63,7 +64,7 @@ namespace CompanyEmployees.Presentation.Controllers
         [HttpDelete("delete-companies", Name = "delete-company")]
         public IActionResult DeleteCompanies(IEnumerable<Guid> companyIds)
         {
-            _service.CompanyService.DeleteCompanies(companyIds, trackChanges: false);
+            _service.CompanyService.DeleteCompany(companyIds, trackChanges: false);
 
             return NoContent();
         }

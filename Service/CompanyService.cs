@@ -76,20 +76,18 @@ namespace Service
             return (companies: companyCollectionToReturn, ids: ids); 
         }
 
-        public async Task DeleteCompanies(IEnumerable<Guid> companyId, bool trackChanges)
+        public async Task DeleteCompany(IEnumerable<Guid> companyId, bool trackChanges)
         {
             if (companyId == null)
                 throw new CollectionByIdsBadRequestException();
 
-            var companyEntities = _mapper.Map<IEnumerable<Company>>(companyId);
+            var  xCompanies= await _repositoryManager.Company.GetByIds(companyId, trackChanges);
 
-            foreach(var Id in companyEntities)
+            foreach (var company in xCompanies)
             {
-                var x = await _repositoryManager.Company.GetCompany(Id.Id, trackChanges);
-                _repositoryManager.Company.DeleteCompanies(x, trackChanges);
+                _repositoryManager.Company.DeleteCompanies(company, trackChanges);
+                _repositoryManager.Save();
             }
-
-            _repositoryManager.Save();
 
             return;
         }

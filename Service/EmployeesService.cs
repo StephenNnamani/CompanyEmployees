@@ -71,16 +71,25 @@ namespace Service
             return employeeDtoCollection;
         }
 
-        public async Task DeleteEmployee(IEnumerable<Guid> employeeIds, bool trackChanges)
+        public async Task<IEnumerable<EmployeeDto>> GetByIds2(IEnumerable<Guid> ids, bool trackChanges)
         {
-            if (employeeIds == null)
+            if (ids == null)
+                throw new IdParametersBadRequestException();
+
+            var employees = await _repositoryManager.Employee.GetByIds(ids, trackChanges);
+
+            if (ids.Count() != employees.Count())
                 throw new CollectionByIdsBadRequestException();
 
-            foreach(var employee in employeeIds)
-            {
-                var x = await _repositoryManager.Employee.GetEmployee(employee, trackChanges);
-                _repositoryManager.Employee.DeleteEmployies(x, trackChanges);
-            }
+            var employeeDtoCollection = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
+            return employeeDtoCollection;
+        }
+
+        public async Task DeleteEmployee(Guid employeeIds, bool trackChanges)
+        {
+            var xEmployees = await _repositoryManager.Employee.GetEmployee(employeeIds, trackChanges);
+
+            _repositoryManager.Employee.DeleteEmployies(xEmployees);
             _repositoryManager.Save();
         }
     }
